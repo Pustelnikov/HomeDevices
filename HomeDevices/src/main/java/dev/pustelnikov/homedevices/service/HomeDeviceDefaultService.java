@@ -1,4 +1,6 @@
-package dev.pustelnikov.homedevices;
+package dev.pustelnikov.homedevices.service;
+
+import dev.pustelnikov.homedevices.HomeDevice;
 
 // Default services for HomeDevice like getters-setters and more 
 public class HomeDeviceDefaultService {

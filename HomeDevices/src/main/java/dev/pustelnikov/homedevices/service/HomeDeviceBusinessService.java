@@ -1,9 +1,10 @@
-package dev.pustelnikov.homedevices;
+package dev.pustelnikov.homedevices.service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import dev.pustelnikov.homedevices.HomeDevice;
 
 // Business services for HomeDevice according to the task
 public class HomeDeviceBusinessService {
