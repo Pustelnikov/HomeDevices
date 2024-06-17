@@ -1,9 +1,7 @@
-package dev.pustelnikov.homedevices;
+package dev.pustelnikov.homedevice;
 
 import java.util.ArrayList;
 import java.util.List;
-import dev.pustelnikov.homedevices.service.HomeDeviceBusinessService;
-import dev.pustelnikov.homedevices.service.HomeDeviceDefaultService;
 
 /* 
  * Task: Home electrical devices. 
@@ -33,8 +31,7 @@ public class Main {
 		HomeDevice tv = new HomeDevice("TV", 150, false);
 		
 		// Creating of services for devices
-		HomeDeviceDefaultService defaultService = new HomeDeviceDefaultService();
-		HomeDeviceBusinessService businessService = new HomeDeviceBusinessService();
+		HomeDeviceService service = new HomeDeviceService();
 		
 		// Adding of devices to collection for operations
 		List<HomeDevice> devices = new ArrayList<>();
@@ -47,34 +44,34 @@ public class Main {
 		devices.add(tv);
 		
 		// Sorting of devices by power
-		businessService.sortByPower(devices, defaultService);
+		service.sortByPower(devices);
 		
 		// Filtering of devices by power range
-		List<HomeDevice> filteredByPowerRangeDevices = businessService.filterByPowerRange(devices, defaultService, 150, 1500);
+		List<HomeDevice> filteredByPowerRangeDevices = service.filterByPowerRange(devices, 150, 1500);
 		
 		// Displaying of sort result
 		System.out.println("All devices (sorted by power)");
-		devices.forEach(d -> System.out.print(defaultService.toString(d)));
+		devices.forEach(d -> System.out.println(d.toString()));
 		System.out.println('\n');
 		
 		// Displaying of filter result
 		System.out.println("Filtered devices (by power range)");
-		filteredByPowerRangeDevices.forEach(d -> System.out.print(defaultService.toString(d)));
+		filteredByPowerRangeDevices.forEach(d -> System.out.println(d.toString()));
 		System.out.println('\n');
 		
 		// Switching on of some devices
-		defaultService.setStatus(computer, true);
-		defaultService.setStatus(fridge, true);
-		defaultService.setStatus(tableLamp, true);
-		defaultService.setStatus(tv, true);
+		computer.setStatus(true);
+		fridge.setStatus(true);
+		tableLamp.setStatus(true);
+		tv.setStatus(true);
 
 		// Displaying of switched on devices
 		System.out.println("Switched on devices");
-		businessService.showSwitchedOnDevices(devices, defaultService);
+		service.showSwitchedOnDevices(devices);
 		System.out.println('\n');
 
 		// Calculating of summary power consumption of switched on devices
-		int sumPowerOfTurnedOnDevices = businessService.calculatePowerOfTurnedOnDevices(devices, defaultService);
+		int sumPowerOfTurnedOnDevices = service.calculatePowerOfTurnedOnDevices(devices);
 		
 		// Displaying of summary power consumption result
 		System.out.println("Total power consumption of switched on devices, Watt: " + sumPowerOfTurnedOnDevices);

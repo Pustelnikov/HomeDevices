@@ -1,17 +1,23 @@
-package dev.pustelnikov.homedevices;
+package dev.pustelnikov.homedevice;
 
-// Typical home device according to the task
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
 public class HomeDevice {
 
 	// Description of device
-	public String description;
+	private String description;
 	
 	// Power consumption
-	public int power;
+	private int power;
 	
 	// Status "On" or "Off"
-	public boolean status;
-
+	private boolean status;
+	
 	public HomeDevice(String description, int power, boolean status) {
 		this.description = description;
 		this.power = power;
