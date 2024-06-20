@@ -1,12 +1,10 @@
 package dev.pustelnikov.homedevice;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
+@Data
+@AllArgsConstructor
 public class HomeDevice {
 
 	// Description of device
@@ -17,10 +15,4 @@ public class HomeDevice {
 	
 	// Status "On" or "Off"
 	private boolean status;
-	
-	public HomeDevice(String description, int power, boolean status) {
-		this.description = description;
-		this.power = power;
-		this.status = status;
-	}
 }
